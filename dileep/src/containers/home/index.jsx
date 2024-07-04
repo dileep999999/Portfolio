@@ -1,10 +1,17 @@
-import React from 'react'
+import React from 'react';
+import './styles.scss'
 
 const Home=()=>{
     return(
-        <div>
-            Home Page
-        </div>
+        <section id="home" className='home'>
+            <div className='home__text-wrapper'>
+                <h1>
+                    Hello, I'm Dileep
+                    <br/>
+                    Full Stack Developer
+                </h1>
+            </div>
+        </section>
     )
 }
 
