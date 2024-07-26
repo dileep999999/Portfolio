@@ -1,60 +1,23 @@
 import React from "react";
 import PageHeaderContent from '../../components/page-header-content';
 import { BsInfoCircleFill } from "react-icons/bs";
-import ImageOne from "../../images/image1.jpg";
-import ImageTwo from "../../images/image2.jpg";
-import ImageThree from "../../images/image3.jpg";
-import ImageFour from "../../images/image4.jpg";
-import ImageFive from "../../images/image5.jpg";
+import logo from "../../images/logo.png";
+import kkr from "../../images/kkr.png";
 import "./styles.scss";
 import { useState } from "react";
 
 const portfolioData = [
   {
     id: 2,
-    name: "Ecommerce",
-    image: ImageOne,
-    link: "",
+    name: "Real Estate",
+    image: logo,
+    link: "http://vrkgreens.com/",
   },
   {
     id: 3,
-    name: "Notes App",
-    link: "",
-    image: ImageTwo,
-  },
-  {
-    id: 2,
-    name: "Supplier Design",
-    image: ImageThree,
-    link: "",
-  },
-  {
-    id: 2,
-    name: "Todo App",
-    image: ImageFour,
-
-    link: "",
-  },
-  {
-    id: 3,
-    name: "Shopping cart design",
-    image: ImageFive,
-    link: "",
-  },
-];
-
-const filterData = [
-  {
-    filterId: 1,
-    label: "All",
-  },
-  {
-    filterId: 2,
-    label: "Developement",
-  },
-  {
-    filterId: 3,
-    label: "Design",
+    name: "Jobs portal",
+    link: "http://kkrjobs.com/",
+    image: kkr,
   },
 ];
 
@@ -70,16 +33,10 @@ const Portfolio = () => {
     setHoveredValue(index);
   }
 
-  console.log("====================================");
-  console.log(hoveredValue);
-  console.log("====================================");
-
   const filteredItems =
     filteredvalue === 1
       ? portfolioData
       : portfolioData.filter((item) => item.id === filteredvalue);
-
-  console.log(filteredItems);
 
   return (
     <section id="portfolio" className="portfolio">
@@ -88,17 +45,6 @@ const Portfolio = () => {
         icon={<BsInfoCircleFill size={40} />}
       />
       <div className="portfolio__content">
-        <ul className="portfolio__content__filter">
-          {filterData.map((item) => (
-            <li
-              className={item.filterId === filteredvalue ? "active" : ""}
-              onClick={() => handleFilter(item.filterId)}
-              key={item.filterId}
-            >
-              {item.label}
-            </li>
-          ))}
-        </ul>
         <div className="portfolio__content__cards">
           {filteredItems.map((item, index) => (
             <div
@@ -109,14 +55,16 @@ const Portfolio = () => {
             >
               <div className="portfolio__content__cards__item__img-wrapper">
                 <a>
-                  <img alt="dummy data" src={item.image} />
+                  <img alt={item.name} src={item.image} />
                 </a>
               </div>
               <div className="overlay">
                 {index === hoveredValue && (
                   <div>
                     <p>{item.name}</p>
-                    <button>Visit</button>
+                    <button onClick={() => window.open(item.link, "_blank")}>
+                      Visit
+                    </button>
                   </div>
                 )}
               </div>
@@ -127,4 +75,5 @@ const Portfolio = () => {
     </section>
   );
 };
+
 export default Portfolio;
