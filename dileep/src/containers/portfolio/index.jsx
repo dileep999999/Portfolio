@@ -22,12 +22,9 @@ const portfolioData = [
 ];
 
 const Portfolio = () => {
-  const [filteredvalue, setFilteredValue] = useState(1);
+  const [filteredvalue] = useState(1);
   const [hoveredValue, setHoveredValue] = useState(null);
 
-  function handleFilter(currentId) {
-    setFilteredValue(currentId);
-  }
 
   function handleHover(index) {
     setHoveredValue(index);
